@@ -1,0 +1,9 @@
+name: RushPearl
+main: com.mauzerov.rushpearl.RushPearl
+version: 1.0
+api-version: 1.16
+author: Mauzerov
+commands:
+  getpearl:
+    description: Gives Rush Pearl To Player
+    usage: /<command>
