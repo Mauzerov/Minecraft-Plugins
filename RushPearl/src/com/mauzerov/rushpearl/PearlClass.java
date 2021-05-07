@@ -43,11 +43,9 @@ public class PearlClass implements Listener {
     @EventHandler
     public static void PlayerUsePearl(ProjectileLaunchEvent event){
         if (event.getEntity().getType() != EntityType.ENDER_PEARL) {
-            event.setCancelled(true);
             return;
         }
         if (!(event.getEntity().getShooter() instanceof Player)) {
-            event.setCancelled(true);
             return;
         }
         
