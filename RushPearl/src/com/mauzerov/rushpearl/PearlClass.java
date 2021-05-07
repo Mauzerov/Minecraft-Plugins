@@ -42,8 +42,21 @@ public class PearlClass implements Listener {
 
     @EventHandler
     public static void PlayerUsePearl(ProjectileLaunchEvent event){
-        if (event.getEntity().getType() != EntityType.ENDER_PEARL) return;
-        if (!(event.getEntity().getShooter() instanceof Player)) return;
+        if (event.getEntity().getType() != EntityType.ENDER_PEARL) {
+            event.setCancelled(true);
+            return;
+        }
+        if (!(event.getEntity().getShooter() instanceof Player)) {
+            event.setCancelled(true);
+            return;
+        }
+        
+        // Disable Throwing When Sneaking
+        if ( ((Player) event.getEntity().getShooter()).isSneaking() ) {
+            ((Player) event.getEntity().getShooter()).sendMessage("§cDon't Sneak When Throwing");
+            event.setCancelled(true);
+            return;
+        }
 
         if (Objects.requireNonNull(((Player) event.getEntity().getShooter())
                 .getInventory().getItemInMainHand().getItemMeta()).getDisplayName().equals(PEARL_ITEM__NAME)) {
